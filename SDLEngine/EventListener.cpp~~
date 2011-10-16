@@ -1,0 +1,11 @@
+#include "EventListener.h"
+
+NS_BEGIN
+
+EventListener::EventListener(){
+}
+
+EventListener::~EventListener(){
+}
+
+NS_END

@@ -1,0 +1,13 @@
+#ifndef __STRING_H__
+#define __STRING_H__
+
+#include "Headers.h"
+
+SDLENGINE_BEGIN
+
+class String : public std::string {
+};
+
+SDLENGINE_END
+
+#endif

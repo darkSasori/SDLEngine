@@ -1,0 +1,18 @@
+#ifndef __EVENTLISTENER_H__
+#define __EVENTLISTENER_H__
+
+#include "Headers.h"
+#include "Event.h"
+
+NS_BEGIN
+
+class EventListener {
+	public:
+		EventListener();
+		virtual ~EventListener();
+		virtual void treat(Event);
+};
+
+NS_END
+
+#endif

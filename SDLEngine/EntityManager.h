@@ -1,0 +1,28 @@
+#ifndef __ENTITYMANAGER_H__
+#define __ENTITYMANAGER_H__
+
+#include "Headers.h"
+#include "Rect.h"
+#include "Entity.h"
+
+NS_BEGIN
+
+class EntityManager {
+	private:
+		friend class Factory;
+		vector<Entity*> m_Entitys;
+
+		EntityManager();
+	public:
+		virtual ~EntityManager();
+
+		void init();
+
+		void addEntity(int, Entity *);
+
+		void process();
+};
+
+NS_END
+
+#endif

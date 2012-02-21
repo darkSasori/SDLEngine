@@ -1,0 +1,21 @@
+#ifndef __IMAGEENTITY_H__
+#define __IMAGEENTITY_H__
+
+#include "SDLEngine.h"
+
+class ImageEntity
+	: public SDLEngine::ImageGroup
+	, public SDLEngine::Entity {
+	public:
+		ImageEntity(bool);
+		~ImageEntity();
+
+		void onCollide(SDLEngine::Entity *);
+
+		void setX(float);
+		void setY(float);
+		float getX();
+		float getY();
+};
+
+#endif

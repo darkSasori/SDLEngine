@@ -20,7 +20,7 @@ class EntityManager {
 
 		void addEntity(Entity *);
 
-		bool collid(Entity *);
+		void process();
 };
 
 NS_END

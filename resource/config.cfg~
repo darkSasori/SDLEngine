@@ -1,0 +1,7 @@
+#Exemplo de comentario
+title: Teste de arquivo de :configuração
+width: 1300
+
+height: 760
+
+KEY_UP&KEY_LEFT: Main.SEILA

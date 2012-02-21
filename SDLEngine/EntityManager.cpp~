@@ -16,7 +16,7 @@ void EntityManager::addEntity(Entity *entity){
 }
 
 bool EntityManager::collid(Entity *e){
-	vector<Entity*>::iterator it;
+	vector<Entity*>::iterator it; = m_Entitys.begin();
 
 	for( it = m_Entitys.begin(); it < m_Entitys.end(); it++ ){
 		e->checkCollide((*it));

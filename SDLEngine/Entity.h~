@@ -15,7 +15,7 @@ class Entity : public Rect{
 		Entity();
 		virtual ~Entity();
 
-		virtual void onCollide(Entity *) = 0;
+		virtual void onCollide() = 0;
 
 		void setProperty(String, String);
 		String getProperty(String);

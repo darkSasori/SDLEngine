@@ -26,8 +26,6 @@ class ImageGroup : public Rect {
 		void addImage(Image*);
 		void removeImage(Image*);
 
-		int count();
-
 		void begin();
 
 		void draw();

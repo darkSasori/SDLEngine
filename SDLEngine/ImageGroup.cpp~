@@ -27,10 +27,6 @@ void ImageGroup::addImage(Image *img){
 	m_Images.push_back(img);
 }
 
-int ImageGroup::count(){
-	return (int)m_Images.size();
-}
-
 void ImageGroup::begin(){
 	m_It = m_Images.begin();
 }

@@ -37,6 +37,12 @@ int main(int narg, char **carg){
 	catch( SDLEngine::Exception e ){
 		std::cout << "SDLEngine Exception: " << e.what() << std::endl;
 	}
+	catch( YAML::ParserException e ){
+		std::cout << "YAML Exception: " << e.what() << std::endl;
+	}
+	catch( std::ifstream::failure e ){
+		std::cout << "FStream Exception: " << "" << std::endl;
+	}
 	catch( std::exception e ){
 		std::cout << "STD Exception: " << e.what() << std::endl;
 	}

@@ -16,5 +16,6 @@
 #include "ImageGroup.h"
 #include "EntityManager.h"
 #include "Entity.h"
+#include "YAMLNode.h"
 
 #endif

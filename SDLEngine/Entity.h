@@ -20,7 +20,7 @@ class Entity : public Rect{
 		void setProperty(String, String);
 		String getProperty(String);
 
-		void checkCollide(Entity *);
+		virtual void checkCollide(Entity *);
 
 		bool operator == (const Entity *);
 		bool operator != (const Entity *);

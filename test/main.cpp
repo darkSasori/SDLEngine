@@ -30,11 +30,13 @@ class Main : public SDLEngine::Application, SDLEngine::EventListener {
 		}
 
 		void init(){
+			SDLEngine::YAMLNode info;
+			info.LoadFile("resource/teste.yaml");
 			int k[] = {SDLK_a, SDL_BUTTON_LEFT};
 			bRun = true;
 
 			factory->getVideoManager()->init();
-			factory->getVideoManager()->createWindow("Teste", Size(800,600), false);
+			factory->getVideoManager()->createWindow(info["title"].to<std::string>(), Size(800,600), false);
 
 			factory->getEventManager()->init();
 			factory->getEventManager()->addEventListener(SDL_QUIT, 1, this);

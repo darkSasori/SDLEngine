@@ -1,5 +1,7 @@
-fasd
+SDLEngine
 
-fads
-
-fa
+Dependencias:
+ - SDL
+ - SDL Image
+ - OpenGL
+ - YAML-CPP

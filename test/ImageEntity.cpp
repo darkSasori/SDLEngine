@@ -10,7 +10,14 @@ ImageEntity::~ImageEntity(){
 
 void ImageEntity::onCollide(SDLEngine::Entity *e){
 	ImageEntity *i = dynamic_cast<ImageEntity*>(e);
-	std::cout << i->count() << std::endl;
+	collide = true;
+//	std::cout << i->count() << std::endl;
+}
+
+void ImageEntity::offCollide(SDLEngine::Entity *e){
+	ImageEntity *i = dynamic_cast<ImageEntity*>(e);
+	collide = false;
+//	std::cout << i->count() << std::endl;
 }
 
 void ImageEntity::setX(float x){
@@ -31,4 +38,16 @@ float ImageEntity::getX(){
 
 float ImageEntity::getY(){
 	return ImageGroup::y;
+}
+
+float ImageEntity::getW(){
+ 	return ImageGroup::w;
+}
+
+float ImageEntity::getH(){
+	return ImageGroup::h;
+}
+
+bool ImageEntity::isCollide(){
+	return collide;
 }

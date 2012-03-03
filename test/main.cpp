@@ -1,5 +1,7 @@
 #include "SDLEngine.h"
-#include "ImageEntity.h"
+#include "Bola.h"
+#include "Barra.h"
+#include "TestThread.h"
 
 using SDLEngine::List;
 using SDLEngine::Size;
@@ -9,61 +11,64 @@ using SDLEngine::Image;
 using SDLEngine::ImageGroup;
 
 class Main : public SDLEngine::Application, SDLEngine::EventListener {
+
 	private:
 		bool bRun;
-		ImageEntity *grp;
-		ImageEntity *img;
+		Barra *barra2;
+		Barra *barra1;
+		Bola *bola;
+		int x;
+		int y;
 
 	public:
 		int main(List<String> args){
+
 			while( bRun ){
 				factory->getVideoManager()->beginDraw();
 				factory->getEventManager()->process();
 
-				grp->draw();
-				img->draw();
+				factory->getEntityManager()->collid(bola);
 
-				//printf("FPS: %0.00f\r", factory->getVideoManager()->getTick());
+				barra2->draw();
+				barra1->draw();
+				bola->drawBola();
+
+				printf("FPS: %0.00f\r", factory->getVideoManager()->getTick());
 				factory->getVideoManager()->endDraw();
 			}
 			return 0;
 		}
 
 		void init(){
+			TestThread *t = new TestThread();
+			t->start();
+			t->lock();
+			x = 800;
+			y = 600;
+
 			SDLEngine::YAMLNode info;
 			info.LoadFile("resource/teste.yaml");
-			int k[] = {SDLK_a, SDL_BUTTON_LEFT};
 			bRun = true;
 
 			factory->getVideoManager()->init();
-			factory->getVideoManager()->createWindow(info["title"].to<std::string>(), Size(800,600), false);
+			factory->getVideoManager()->createWindow(info["title"].to<std::string>(), Size(x,y), false);
+
+			barra1 = new Barra("X", 30, 150);
+			bola = new Bola(x, y);
+			barra2 = new Barra("Y", 770, 150);
 
 			factory->getEventManager()->init();
 			factory->getEventManager()->addEventListener(SDL_QUIT, 1, this);
 			factory->getEventManager()->addEventListener(SDLK_q, 1, this);
-			factory->getEventManager()->addEventListener(SDLK_UP, 2, this);
-			factory->getEventManager()->addEventListener(SDLK_DOWN, 3, this);
-			factory->getEventManager()->addEventListener(SDLK_LEFT, 4, this);
-			factory->getEventManager()->addEventListener(SDLK_RIGHT, 5, this);
+			factory->getEventManager()->addEventListener(SDLK_UP, 1, barra2);
+			factory->getEventManager()->addEventListener(SDLK_DOWN, 2, barra2);
+			factory->getEventManager()->addEventListener(SDLK_a, 1, barra1);
+			factory->getEventManager()->addEventListener(SDLK_z, 2, barra1);
 
-			img = new ImageEntity(true);
-			img->addImage( Image::createImage(Rect(90,10,45,45), Color(255,255,255)) );
-			img->setX(150);
-			img->setY(150);
-			img->begin();
 
-			grp = new ImageEntity(true);
-			grp->addImage( Image::createImage(Rect(90,10,45,45), Color(0,0,0)) );
-			grp->addImage( Image::createImage(Rect(90,10,45,45), Color(255,0,0)) );
-			grp->addImage( Image::createImage(Rect(90,10,45,45), Color(0,255,0)) );
-			grp->addImage( Image::createImage(Rect(90,10,45,45), Color(0,0,255)) );
-			grp->addImage( Image::createImage(Rect(90,10,45,45), Color(255,255,255)) );
-			grp->setX(100);
-			grp->setY(100);
-			grp->begin();
-
-			factory->getEntityManager()->addEntity(grp);
-			factory->getEntityManager()->addEntity(img);
+			factory->getEntityManager()->addEntity(barra2);
+			factory->getEntityManager()->addEntity(barra1);
+			factory->getEntityManager()->addEntity(bola);
 		}
 
 		void treat(SDLEngine::Event e){
@@ -71,10 +76,7 @@ class Main : public SDLEngine::Application, SDLEngine::EventListener {
 			case 1:
 				bRun = false;
 				break;
-			case 2: grp->setY(grp->getY() - 2); factory->getEntityManager()->collid(grp); break;
-			case 3: grp->setY(grp->getY() + 2); factory->getEntityManager()->collid(grp); break;
-			case 4: grp->setX(grp->getX() - 2); factory->getEntityManager()->collid(grp); break;
-			case 5: grp->setX(grp->getX() + 2); factory->getEntityManager()->collid(grp); break;
 			}
 		}
+
 }app;

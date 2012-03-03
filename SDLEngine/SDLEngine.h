@@ -17,5 +17,6 @@
 #include "EntityManager.h"
 #include "Entity.h"
 #include "YAMLNode.h"
+#include "Thread.h"
 
 #endif

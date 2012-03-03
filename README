@@ -5,3 +5,14 @@ Dependencias:
  - SDL Image
  - OpenGL
  - YAML-CPP
+ - Boost
+
+ToDo:
+ - Melhorar Thread
+ - Melhorar YAML
+ - Sistema de Particulas
+ - Sistema de Arquivo PhysicsFS
+ - Sistema de Socket, UDP e TCP
+ - Sistema de Gerenciamento de Singleton
+ - Sistema de GUI libRocket
+ - Portar Native Client

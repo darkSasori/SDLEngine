@@ -50,7 +50,7 @@ void VideoManager::createWindow(String title, Size size, bool fullscreen){
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	setTime(30);
+	setTime(10);
 	m_Fps = 0;
 	m_Start = SDL_GetTicks();
 }
